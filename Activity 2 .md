@@ -3,7 +3,7 @@
 ## Block Diagram / Architecture
 
 <p align="center">
-  <img src="activity/images/img 2.png" alt="Hybrid OTEC System Block Diagram" width="50%">
+  <img src="images/img 2.png" alt="Hybrid OTEC System Block Diagram" width="50%">
   <br>
   <em>Figure 1: Block Diagram of a Tribrid Renewable Energy System.</em>
 </p>
@@ -47,4 +47,5 @@ By integrating **solar**, **wind**, and **biomass**, the system ensures:
 - **24/7 operation capability** via biomass as a dispatchable backup  
 - **Local resource utilization** reducing dependency on fossil fuels  
 - **Socio-economic upliftment** by converting local waste into energy  
+
 
