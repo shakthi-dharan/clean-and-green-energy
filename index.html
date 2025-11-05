@@ -79,7 +79,7 @@
         li.appendChild(btn);
         fileListEl.appendChild(li);
       });
-      if (files.length) loadFile(`activity/${files[0]}`, fileListEl.querySelector('button'));
+    if (files.length) loadFile(files[0], fileListEl.querySelector('button'));
     }
 
     async function loadFile(path, button) {
@@ -98,4 +98,5 @@
   </script>
 </body>
 </html>
+
 
