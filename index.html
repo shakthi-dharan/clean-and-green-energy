@@ -74,7 +74,7 @@
         const li = document.createElement('li');
         const btn = document.createElement('button');
         btn.textContent = name;
-        btn.onclick = () => loadFile(`activity/${file}`, btn);
+        btn.onclick = () => loadFile(file, btn);
         if (i === 0) btn.classList.add('active');
         li.appendChild(btn);
         fileListEl.appendChild(li);
@@ -98,3 +98,4 @@
   </script>
 </body>
 </html>
+
