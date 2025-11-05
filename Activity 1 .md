@@ -9,7 +9,7 @@ The hybrid system is designed as a **standalone, off-grid microgrid**, combining
 The power flow can be summarized as follows:
 
 <p align="center">
-  <img src="activity/images/img1.png" alt="Hybrid OTEC System Block Diagram" width="50%">
+  <img src="images/img1.png" alt="Hybrid OTEC System Block Diagram" width="50%">
   <br>
   <em>Figure 1: Hybrid OTEC System Block Diagram showing warm and cold water loops, turbine-generator, condenser, and freshwater output.</em>
 </p>
