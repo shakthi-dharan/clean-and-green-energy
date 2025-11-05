@@ -57,7 +57,7 @@
 
     async function loadList() {
       try {
-        const res = await fetch('activity/files.json');
+        const res = await fetch('files.json');
         if (!res.ok) throw new Error('Cannot load files.json');
         const files = await res.json();
         createList(files);
