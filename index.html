@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLEAN AND GREEN ENERGY</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8f9fb;
+      color: #333;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #1e88e5;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    main { flex: 1; display: flex; overflow: hidden; }
+    #sidebar {
+      width: 30%; background:#fff; border-right:1px solid #ddd;
+      padding:1rem; overflow-y:auto;
+    }
+    #fileList { list-style:none; margin:0; padding:0; }
+    #fileList button {
+      width:100%; background:none; border:none; text-align:left;
+      font-size:1rem; padding:0.5rem 0.75rem; border-radius:6px;
+      cursor:pointer; transition:background 0.2s,color 0.2s;
+    }
+    #fileList button:hover { background:#e3f2fd; color:#1565c0; }
+    #fileList button.active { background:#1e88e5; color:#fff; }
+    #content {
+      flex:1; width:70%; padding:2rem; overflow-y:auto; background:#fafafa;
+    }
+    #content h1,#content h2,#content h3{ color:#1e88e5; }
+    #content pre{ background:#f1f3f4; padding:1rem; border-radius:6px; overflow-x:auto; }
+  </style>
+</head>
+<body>
+  <header>Solar–Wind–Biomass–OTEC Hybrid Energy Flow System</header>
+  <main>
+    <aside id="sidebar"><ul id="fileList"></ul></aside>
+    <section id="content">
+      <p><em>Loading file list…</em></p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const fileListEl = document.getElementById('fileList');
+    const contentEl = document.getElementById('content');
+
+    async function loadList() {
+      try {
+        const res = await fetch('activity/files.json');
+        if (!res.ok) throw new Error('Cannot load files.json');
+        const files = await res.json();
+        createList(files);
+      } catch (err) {
+        fileListEl.innerHTML = `<li style="color:red;">${err.message}</li>`;
+        contentEl.innerHTML = '';
+      }
+    }
+
+    function createList(files) {
+      fileListEl.innerHTML = '';
+      files.forEach((file, i) => {
+        const name = file.replace('.md','');
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.textContent = name;
+        btn.onclick = () => loadFile(`activity/${file}`, btn);
+        if (i === 0) btn.classList.add('active');
+        li.appendChild(btn);
+        fileListEl.appendChild(li);
+      });
+      if (files.length) loadFile(`activity/${files[0]}`, fileListEl.querySelector('button'));
+    }
+
+    async function loadFile(path, button) {
+      document.querySelectorAll('#fileList button').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+      try {
+        const res = await fetch(path);
+        const text = await res.text();
+        contentEl.innerHTML = marked.parse(text);
+      } catch {
+        contentEl.innerHTML = `<p style="color:red;">Error loading ${path}</p>`;
+      }
+    }
+
+    loadList();
+  </script>
+</body>
+</html>
