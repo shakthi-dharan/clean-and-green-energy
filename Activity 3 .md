@@ -3,7 +3,7 @@
 ##  Block Diagram / Architecture
 
 <p align="center">
-  <img src="activity/images/img 3.png" alt="Hybrid OTEC System Block Diagram" width="50%">
+  <img src="images/img 3.png" alt="Hybrid OTEC System Block Diagram" width="50%">
   <br>
   <em>Figure 1:Hybrid OTEC Cycle: Electricity and Freshwater Production Pathway.</em>
 </p>
@@ -64,5 +64,6 @@ The system yields **three major outputs:**
 - Demonstrated scalability for communities requiring **energy + water co-production**.
 
 ---
+
 
 
